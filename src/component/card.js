@@ -1,6 +1,6 @@
 import React from 'react'
 import '../style/card.css'
-function card({item , Hc}) {
+function card({item , handleClick}) {
   const {title,author,price,img}=item;
   return (
     <div className='cards'>
@@ -11,9 +11,9 @@ function card({item , Hc}) {
           <p>{title}</p>
           <p>{author}</p>
           <p>Price - {price}rs</p>
-          <button onClick={()=>Hc(item)}>Add to cart</button>
+          <button onClick={()=>handleClick(item)}>Add to cart</button>
         </div>
     </div>
   )
 }
-export default card
+export default card 

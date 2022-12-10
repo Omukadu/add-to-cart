@@ -1,19 +1,41 @@
 import "./App.css";
 import Navbar from "./component/Navbar";
 import Amazon from "./component/amazon";
+import Cart from "./component/Cart";
 import { useState } from "react";
 function App() {
-  const [show,setshow]=useState(true);
-  const[cart,setcart]=useState([]);
+  const [show, setshow] = useState(true);
+  const [cart, setcart] = useState([]);
+  const [warning, setwarning] = useState();
 
-  const Hc = (item)=>{
-    
-  }
+  const handleClick = (item) => {
+    let ispresent = false;
+
+    cart.forEach((product) => {
+      if (item.id === product.id) {
+        ispresent = true;
+      }
+    });
+
+    if (ispresent) {
+      setwarning(true);
+      setTimeout(() => {
+        setwarning(false);
+      }, 2000);
+      return;
+    } else {
+      //written by own
+      setcart([...cart, item]);
+    }
+  };
 
   return (
     <div className="App">
-      <Navbar size={cart.length}/>
-      <Amazon Hc={Hc}/>
+      <Navbar size={cart.length} />
+      <Amazon handleClick={handleClick} />
+      <Cart cart={cart} set={setcart} />
+      {warning && <div className="warning">Item is already in cart</div>}
+      {/* if warning is true then run up statement */}
     </div>
   );
 }
