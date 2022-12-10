@@ -31,9 +31,12 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar size={cart.length} />
-      <Amazon handleClick={handleClick} />
-      <Cart cart={cart} set={setcart} />
+      <Navbar size={cart.length} setshow={setshow} />
+      {
+        show ? <Amazon handleClick={handleClick} /> : <Cart cart={cart} set={setcart} />
+      }
+      
+      
       {warning && <div className="warning">Item is already in cart</div>}
       {/* if warning is true then run up statement */}
     </div>

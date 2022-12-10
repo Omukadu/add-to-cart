@@ -1,11 +1,11 @@
 import React from "react";
 import "../style/Nav.css"
-function Navbar({size}) {
+function Navbar({size,setshow}) {
   return (
     <nav>
       <div className="nav_box">
-        <span className="my_shop">Shopping cart</span>
-        <div className="cart">
+        <span className="my_shop" onClick={()=>setshow(true)}>Shopping cart</span>
+        <div className="cart" onClick={()=>setshow(false)}>
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
