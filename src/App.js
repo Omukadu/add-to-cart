@@ -29,11 +29,15 @@ function App() {
     }
   };
 
+  const handlechange = (item,d) => {
+    
+  }
+
   return (
     <div className="App">
       <Navbar size={cart.length} setshow={setshow} />
       {
-        show ? <Amazon handleClick={handleClick} /> : <Cart cart={cart} set={setcart} />
+        show ? <Amazon handleClick={handleClick} /> : <Cart cart={cart} set={setcart} handlechange={handlechange} />
       }
       
       
