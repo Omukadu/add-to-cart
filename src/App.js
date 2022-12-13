@@ -29,18 +29,31 @@ function App() {
     }
   };
 
-  const handlechange = (item,d) => {
-    
-  }
+  const handlechange = (item, d) => {
+    let ind;
+    cart.forEach((data, index) => {
+      if (data.id === item.id) 
+      ind = index;
+    });
+
+    // console.log(ind);
+    console.log(item.id);
+    const temparr = cart;
+    temparr[ind].amount += d;
+    if (temparr[ind].amount===0)
+    temparr[ind].amount=1;
+    setcart([...temparr])
+  }; 
 
   return (
     <div className="App">
       <Navbar size={cart.length} setshow={setshow} />
-      {
-        show ? <Amazon handleClick={handleClick} /> : <Cart cart={cart} set={setcart} handlechange={handlechange} />
-      }
-      
-      
+      {show ? (
+        <Amazon handleClick={handleClick} />
+      ) : (
+        <Cart cart={cart} setcart={setcart} handlechange={handlechange} />
+      )}
+
       {warning && <div className="warning">Item is already in cart</div>}
       {/* if warning is true then run up statement */}
     </div>
